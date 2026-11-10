@@ -1,0 +1,21 @@
+{
+  "name": "eric-flow",
+  "owner": {
+    "name": "Eric Barreto"
+  },
+  "metadata": {
+    "description": "A project-agnostic development harness for Claude Code: modular stages wired as a parallel graph",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "eric-flow",
+      "description": "Modular development harness. Each stage (spec, triage, research, council, plan, build, review, verify, learn) works on its own or chained by /feature, with independent work fanned out to parallel subagents.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/flow"
+      ]
+    }
+  ]
+}
