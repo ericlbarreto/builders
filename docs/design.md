@@ -1,6 +1,6 @@
 # eric-flow design
 
-Status: draft for review. Nothing below is built yet except the plugin skeleton.
+Status: 0.2.0. Every module exists as a first version and has not yet been run on real work. Expect the first runs to change them.
 
 ## Goals
 
@@ -22,7 +22,11 @@ Status: draft for review. Nothing below is built yet except the plugin skeleton.
 
 A graph is a map of steps (nodes) and dependencies (edges). A node runs as soon as everything it depends on is done, so independent nodes run in parallel. Graphs also branch (skip research for a small change) and loop (review, fix, review again, with a cap).
 
-Parallel stages are implemented as Claude Code Workflow scripts under `workflows/`, which fan out subagents deterministically and collect their results.
+Parallel stages fan out by sending every subagent call of the stage in a single message, so they run at the same time (`reference/parallel.md`). When the user has opted into Claude Code's Workflow tool, a stage may run as a workflow script with the same briefs and join rules.
+
+### Small by default
+
+Short briefs, capped outputs (at most 5 findings and 300 words per subagent) and the fewest tests that prove a behavior. Small inputs and outputs give sharper results and keep the orchestrator from losing track when many subagents report at once.
 
 ### Lens
 
@@ -96,10 +100,10 @@ Triage picks a size so small changes do not pay for the full graph:
 | --- | --- |
 | orchestration, triage, judge, implementation | Claude (strongest available) |
 | exploration, simple lenses | a smaller, faster Claude model |
-| recent or web research | Grok CLI when installed, otherwise web search |
-| adversarial review | a different model family via the Cursor CLI (`cursor-agent`) when installed |
+| recent or web research | Grok, then Cursor with web access, then web search |
+| adversarial review | Codex, then Cursor with a GPT model, then a Claude subagent |
 
-Every external model is optional. If a CLI is missing, the module says so and falls back to Claude with a different lens prompt.
+Every external model is optional. Each role walks its fallback chain (`reference/external-models.md`), uses the first link that is installed and signed in, and reports which one ran. A missing or signed-out CLI never stops a module.
 
 ## Learning
 
@@ -119,14 +123,28 @@ Personal preferences stay in `~/.claude/CLAUDE.md`.
 | leo-skills | second-model review, agent debate, Grok research |
 | new here | triage that sizes the graph, lenses from project context, judged council, learning through PRs |
 
-## Build order
+## Repository layout
 
-1. Plugin skeleton and install path (done in 0.1.0).
-2. `review` with built-in lenses, tested on a real PR.
-3. `triage` and `research`.
-4. `council`.
-5. `spec`, `plan`, `build`, `feature`.
-6. `learn`.
+```
+.claude-plugin/marketplace.json   the marketplace and the plugin's skill list
+skills/<module>/SKILL.md          one skill per module, plus the flow index
+roles/                            subagent briefs (lens reviewer, adversary, triage, judge...)
+lenses/                           built-in lenses
+reference/                        shared contracts: work folder, parallel stages, context, external models
+docs/design.md                    this file
+```
+
+Skills reference `roles/`, `lenses/` and `reference/` relative to the plugin root, two directories above each skill.
+
+## Hardening order
+
+All modules exist. They get proven on real work in this order:
+
+1. `review` on real PRs.
+2. `triage` and `research`.
+3. `council`.
+4. `spec`, `plan`, `build`, `feature`.
+5. `learn`, once there are reviews to learn from.
 
 ## Open questions
 

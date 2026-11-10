@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "A project-agnostic development harness for Claude Code: modular stages wired as a parallel graph",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
@@ -13,8 +13,19 @@
       "description": "Modular development harness. Each stage (spec, triage, research, council, plan, build, review, verify, learn) works on its own or chained by /feature, with independent work fanned out to parallel subagents.",
       "source": "./",
       "strict": false,
+      "version": "0.2.0",
       "skills": [
-        "./skills/flow"
+        "./skills/flow",
+        "./skills/spec",
+        "./skills/triage",
+        "./skills/research",
+        "./skills/council",
+        "./skills/plan",
+        "./skills/build",
+        "./skills/review",
+        "./skills/verify",
+        "./skills/learn",
+        "./skills/feature"
       ]
     }
   ]

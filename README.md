@@ -2,7 +2,31 @@
 
 A project-agnostic development harness for Claude Code. Every stage of the work (spec, triage, research, council, plan, build, review, verify, learn) is a module that works on its own or chained by `/feature`, and independent work runs as parallel subagents.
 
-Status: early. See [docs/design.md](docs/design.md) for the design and the build order.
+Status: 0.2.0, first versions of every module. See [docs/design.md](docs/design.md).
+
+## Modules
+
+| Command | What it does |
+| --- | --- |
+| `/eric-flow:review <pr\|branch>` | parallel multi-lens + second-model review, findings verified and ranked; `--fix` applies them |
+| `/eric-flow:triage` | size a change: domains, risk, lenses, research and decisions it needs |
+| `/eric-flow:research` | answer questions with cited sources, in parallel |
+| `/eric-flow:council` | settle a decision through a bounded, judged debate |
+| `/eric-flow:spec` | idea or ticket to spec, with one batch of questions |
+| `/eric-flow:plan` | slice a spec into file-disjoint parallel waves |
+| `/eric-flow:build` | build a plan, one worktree per slice |
+| `/eric-flow:verify` | prove a change works where it runs |
+| `/eric-flow:learn` | turn caught mistakes into lens rules, through PRs |
+| `/eric-flow:feature` | the whole graph, three human checkpoints |
+
+## Optional external models
+
+Each role walks a fallback chain and reports which link ran:
+
+- second-model review: Codex, then Cursor CLI with a GPT model, then Claude
+- research: Grok, then Cursor CLI, then web search
+
+None are required.
 
 ## Install
 
