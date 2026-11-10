@@ -1,6 +1,6 @@
 # External models and fallback chains
 
-eric-flow routes some roles to models outside Claude. **Every one is optional.** Walk the chain for the role, use the first link that is installed **and** signed in, and tell the user which link ran.
+builders routes some roles to models outside Claude. **Every one is optional.** Walk the chain for the role, use the first link that is installed **and** signed in, and tell the user which link ran.
 
 ## Detect once per session
 

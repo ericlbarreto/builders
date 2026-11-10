@@ -1,6 +1,6 @@
 ---
 name: feature
-description: eric-flow full graph. Take a feature from idea or ticket to a verified pull request - spec, triage, parallel discovery (lenses, code map, research), council on open decisions, plan, parallel build, multi-model review, verification and learning - stopping only at three human checkpoints. Triage sizes the graph so small changes skip stages. Use when the user asks eric-flow to build a feature end to end, or runs /eric-flow:feature.
+description: builders full graph. Take a feature from idea or ticket to a verified pull request - spec, triage, parallel discovery (lenses, code map, research), council on open decisions, plan, parallel build, multi-model review, verification and learning - stopping only at three human checkpoints. Triage sizes the graph so small changes skip stages. Use when the user asks builders to build a feature end to end, or runs /builders:feature.
 ---
 
 # feature

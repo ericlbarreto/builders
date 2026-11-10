@@ -1,6 +1,6 @@
 ---
 name: review
-description: eric-flow review module. Review a pull request, branch or diff in parallel through several lenses plus a second model, verify every finding, and return them ranked by severity (optionally fixing them). Use when the user asks for an eric-flow review, a multi-lens or second-model review, or runs /eric-flow:review with a PR number, branch or path. Works standalone, no spec or plan needed.
+description: builders review module. Review a pull request, branch or diff in parallel through several lenses plus a second model, verify every finding, and return them ranked by severity (optionally fixing them). Use when the user asks for a builders review, a multi-lens or second-model review, or runs /builders:review with a PR number, branch or path. Works standalone, no spec or plan needed.
 ---
 
 # review
@@ -28,7 +28,7 @@ Follow `reference/context.md`. Pick the task folder per `reference/work-folder.m
 If `triage.md` exists and is newer than the change, use its lens list. Otherwise do a quick inline triage (read `roles/triage.md`, but decide only domains and lenses, not research or council):
 - always `correctness`; `tests` unless the change is docs-only
 - every built-in lens in `lenses/` whose `applies-when` matches
-- every project lens in `.flow/lenses/` whose `applies-when` matches
+- every project lens in `.builders/lenses/` whose `applies-when` matches
 - a derived lens for any touched domain no lens covers
 
 ### 4. Fan out (one message, all at once)

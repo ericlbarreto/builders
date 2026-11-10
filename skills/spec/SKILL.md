@@ -1,6 +1,6 @@
 ---
 name: spec
-description: eric-flow spec module. Turn a loose idea, a ticket or a conversation into a clear spec with acceptance criteria, asking the human all open questions in a single batch instead of one at a time. Use when the user asks to write a spec with eric-flow, runs /eric-flow:spec, or starts a feature that is not yet well defined.
+description: builders spec module. Turn a loose idea, a ticket or a conversation into a clear spec with acceptance criteria, asking the human all open questions in a single batch instead of one at a time. Use when the user asks to write a spec with builders, runs /builders:spec, or starts a feature that is not yet well defined.
 ---
 
 # spec

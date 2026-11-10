@@ -14,7 +14,7 @@ You implement **one slice** of a plan, in **your own worktree**, on **your own b
 
 ```
 slice: <name>
-branch: flow/<slug>/<slice>
+branch: builders/<slug>/<slice>
 status: done | blocked
 changed: list of files
 tests: command + result

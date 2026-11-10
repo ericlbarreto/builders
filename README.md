@@ -1,23 +1,23 @@
-# eric-flow
+# builders
 
 A project-agnostic development harness for Claude Code. Every stage of the work (spec, triage, research, council, plan, build, review, verify, learn) is a module that works on its own or chained by `/feature`, and independent work runs as parallel subagents.
 
-Status: 0.2.0, first versions of every module. See [docs/design.md](docs/design.md).
+Status: 0.3.0, first versions of every module. See [docs/design.md](docs/design.md).
 
 ## Modules
 
 | Command | What it does |
 | --- | --- |
-| `/eric-flow:review <pr\|branch>` | parallel multi-lens + second-model review, findings verified and ranked; `--fix` applies them |
-| `/eric-flow:triage` | size a change: domains, risk, lenses, research and decisions it needs |
-| `/eric-flow:research` | answer questions with cited sources, in parallel |
-| `/eric-flow:council` | settle a decision through a bounded, judged debate |
-| `/eric-flow:spec` | idea or ticket to spec, with one batch of questions |
-| `/eric-flow:plan` | slice a spec into file-disjoint parallel waves |
-| `/eric-flow:build` | build a plan, one worktree per slice |
-| `/eric-flow:verify` | prove a change works where it runs |
-| `/eric-flow:learn` | turn caught mistakes into lens rules, through PRs |
-| `/eric-flow:feature` | the whole graph, three human checkpoints |
+| `/builders:review <pr\|branch>` | parallel multi-lens + second-model review, findings verified and ranked; `--fix` applies them |
+| `/builders:triage` | size a change: domains, risk, lenses, research and decisions it needs |
+| `/builders:research` | answer questions with cited sources, in parallel |
+| `/builders:council` | settle a decision through a bounded, judged debate |
+| `/builders:spec` | idea or ticket to spec, with one batch of questions |
+| `/builders:plan` | slice a spec into file-disjoint parallel waves |
+| `/builders:build` | build a plan, one worktree per slice |
+| `/builders:verify` | prove a change works where it runs |
+| `/builders:learn` | turn caught mistakes into lens rules, through PRs |
+| `/builders:feature` | the whole graph, three human checkpoints |
 
 ## Optional external models
 
@@ -31,16 +31,16 @@ None are required.
 ## Install
 
 ```bash
-claude plugin marketplace add ericlbarreto/eric-flow
-claude plugin install eric-flow@eric-flow
+claude plugin marketplace add ericlbarreto/builders
+claude plugin install builders@builders
 ```
 
-Or inside Claude Code: `/plugin marketplace add ericlbarreto/eric-flow`, then `/plugin install eric-flow@eric-flow`.
+Or inside Claude Code: `/plugin marketplace add ericlbarreto/builders`, then `/plugin install builders@builders`.
 
 ## Update
 
 ```bash
-claude plugin marketplace update eric-flow
+claude plugin marketplace update builders
 ```
 
 ## Use it in a project
@@ -50,10 +50,10 @@ Add to the project's `.claude/settings.json` so collaborators are offered the pl
 ```json
 {
   "extraKnownMarketplaces": {
-    "eric-flow": { "source": { "source": "github", "repo": "ericlbarreto/eric-flow" } }
+    "builders": { "source": { "source": "github", "repo": "ericlbarreto/builders" } }
   },
-  "enabledPlugins": { "eric-flow@eric-flow": true }
+  "enabledPlugins": { "builders@builders": true }
 }
 ```
 
-Project-specific rules go in that project's `.flow/lenses/*.md`.
+Project-specific rules go in that project's `.builders/lenses/*.md`.

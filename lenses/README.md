@@ -1,6 +1,6 @@
 # Lenses
 
-A lens is one point of view: what a single reviewer hunts for. Built-in lenses here hold for any project. Projects add their own in `.flow/lenses/<name>.md`, and triage derives new ones on the fly.
+A lens is one point of view: what a single reviewer hunts for. Built-in lenses here hold for any project. Projects add their own in `.builders/lenses/<name>.md`, and triage derives new ones on the fly.
 
 ## Format
 

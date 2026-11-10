@@ -1,11 +1,11 @@
 ---
-name: flow
-description: Index of the eric-flow harness. Use when the user asks what eric-flow can do, which flow module fits a task, or how the modules chain together.
+name: builders
+description: Index of the builders harness. Use when the user asks what builders can do, which module fits a task, or how the modules chain together.
 ---
 
-# eric-flow
+# builders
 
-eric-flow is a project-agnostic development harness. Every stage is a module that works on its own or chained by `feature`. Modules hand off through files in `.flow/<task>/` in the project (see `reference/work-folder.md` at the plugin root, two directories above this skill).
+builders is a project-agnostic development harness. Every stage is a module that works on its own or chained by `feature`. Modules hand off through files in `.builders/<task>/` in the project (see `reference/work-folder.md` at the plugin root, two directories above this skill).
 
 | Module | Use it alone to | Writes |
 | --- | --- | --- |
@@ -20,4 +20,4 @@ eric-flow is a project-agnostic development harness. Every stage is a module tha
 | `learn` | turn caught mistakes into lens rules, through PRs | PRs |
 | `feature` | run the whole graph with three human checkpoints | all of the above |
 
-Invoke a module as `/eric-flow:<module>`. Recommend the smallest module that does the job: a PR that only needs checking wants `review`, not `feature`.
+Invoke a module as `/builders:<module>`. Recommend the smallest module that does the job: a PR that only needs checking wants `review`, not `feature`.

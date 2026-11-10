@@ -1,6 +1,6 @@
 ---
 name: plan
-description: eric-flow plan module. Slice a spec into implementation slices that own disjoint files and form a dependency graph, so independent slices can be built in parallel. Short and actionable, not an essay. Use when the user asks for an eric-flow plan, runs /eric-flow:plan, or has a spec ready to build.
+description: builders plan module. Slice a spec into implementation slices that own disjoint files and form a dependency graph, so independent slices can be built in parallel. Short and actionable, not an essay. Use when the user asks for a builders plan, runs /builders:plan, or has a spec ready to build.
 ---
 
 # plan

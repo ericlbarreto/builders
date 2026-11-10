@@ -1,6 +1,6 @@
 ---
 name: research
-description: eric-flow research module. Answer one or more research questions with cited sources, in parallel, using Grok for recent or live information when installed, web search and official docs otherwise, and the codebase first. Keeps what sources say apart from inference. Use when the user asks to research something with eric-flow, runs /eric-flow:research, or when triage lists unknowns.
+description: builders research module. Answer one or more research questions with cited sources, in parallel, using Grok for recent or live information when installed, web search and official docs otherwise, and the codebase first. Keeps what sources say apart from inference. Use when the user asks to research something with builders, runs /builders:research, or when triage lists unknowns.
 ---
 
 # research
@@ -9,7 +9,7 @@ Paths: the plugin root is two directories above this skill's base directory.
 
 ## Steps
 
-1. **Collect questions**: from the user's message, or from the `Research` section of `.flow/<slug>/triage.md`. Rewrite each as one specific, answerable question. Merge near-duplicates.
+1. **Collect questions**: from the user's message, or from the `Research` section of `.builders/<slug>/triage.md`. Rewrite each as one specific, answerable question. Merge near-duplicates.
 2. **Load context** per `reference/context.md` (light: you need the domain and stack, not every invariant).
 3. **Detect tools** per `reference/external-models.md` (Grok, web search).
 4. **Fan out**: one **researcher** subagent (`roles/researcher.md`) per question, all in one message, following `reference/parallel.md`. Each brief includes which tools exist and how to call them.

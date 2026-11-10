@@ -1,6 +1,6 @@
 ---
 name: verify
-description: eric-flow verify module. Prove a change works where it actually runs (local app, preview deployment, CLI) against its acceptance criteria, with evidence for each, including one unhappy path per criterion. Use when the user asks to verify a change or PR with eric-flow, or runs /eric-flow:verify.
+description: builders verify module. Prove a change works where it actually runs (local app, preview deployment, CLI) against its acceptance criteria, with evidence for each, including one unhappy path per criterion. Use when the user asks to verify a change or PR with builders, or runs /builders:verify.
 ---
 
 # verify

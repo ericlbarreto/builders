@@ -1,6 +1,6 @@
-# eric-flow design
+# builders design
 
-Status: 0.2.0. Every module exists as a first version and has not yet been run on real work. Expect the first runs to change them.
+Status: 0.3.0. Every module exists as a first version and has not yet been run on real work. Expect the first runs to change them.
 
 ## Goals
 
@@ -34,18 +34,18 @@ A lens is a single point of view: a subagent that looks at the same change hunti
 
 1. **Built-in lenses** shipped in `lenses/`, valid for any project: security, data integrity, performance, tests, product, compliance/legal, maintainability.
 2. **Derived lenses.** Triage reads the project context and the change, and writes ad hoc lenses for domains it discovers (for example "consent before messaging" when a change sends SMS).
-3. **Project lenses** (optional) in the target repo at `.flow/lenses/*.md`, for fixed rules of that codebase.
+3. **Project lenses** (optional) in the target repo at `.builders/lenses/*.md`, for fixed rules of that codebase.
 
 ### Work folder
 
 Modules hand off through files, one folder per task in the target repo:
 
 ```
-.flow/<task-slug>/
+.builders/<task-slug>/
   spec.md  triage.md  research.md  decision.md  plan.md  review.md  verify.md
 ```
 
-Each module reads whatever exists and ignores what is missing. That is what makes modules standalone, chainable and resumable across sessions. `.flow/<task-slug>/` is meant to be gitignored; `.flow/lenses/` is meant to be committed.
+Each module reads whatever exists and ignores what is missing. That is what makes modules standalone, chainable and resumable across sessions. `.builders/<task-slug>/` is meant to be gitignored; `.builders/lenses/` is meant to be committed.
 
 ## Modules
 
@@ -109,8 +109,8 @@ Every external model is optional. Each role walks its fallback chain (`reference
 
 `learn` never writes to machine memory. It opens a PR with the rule and its origin (which review caught it, on which change), against:
 
-- the **eric-flow** repo when the rule is about process and holds for any project;
-- the **target project** (`.flow/lenses/`) when the rule is about that codebase.
+- the **builders** repo when the rule is about process and holds for any project;
+- the **target project** (`.builders/lenses/`) when the rule is about that codebase.
 
 Personal preferences stay in `~/.claude/CLAUDE.md`.
 
@@ -127,7 +127,7 @@ Personal preferences stay in `~/.claude/CLAUDE.md`.
 
 ```
 .claude-plugin/marketplace.json   the marketplace and the plugin's skill list
-skills/<module>/SKILL.md          one skill per module, plus the flow index
+skills/<module>/SKILL.md          one skill per module, plus the builders index
 roles/                            subagent briefs (lens reviewer, adversary, triage, judge...)
 lenses/                           built-in lenses
 reference/                        shared contracts: work folder, parallel stages, context, external models
@@ -148,6 +148,6 @@ All modules exist. They get proven on real work in this order:
 
 ## Open questions
 
-- Should `.flow/<task-slug>/` live in the target repo (gitignored) or under `~/.flow/` keyed by repo?
+- Should `.builders/<task-slug>/` live in the target repo (gitignored) or under `~/.builders/` keyed by repo?
 - How strict should file ownership be between parallel slices when a shared file (a schema, a router) is unavoidable?
 - Token budget per graph size, and whether triage should print an estimate before running a large graph.

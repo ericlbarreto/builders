@@ -8,7 +8,7 @@ Small inputs and small outputs give better results, and keep the orchestrator fr
 
 - **Briefs:** only what the subagent needs. Paste the role and the lens, point at files by path instead of pasting them, and pass at most 10 lines of project context.
 - **Outputs:** every brief ends with a hard limit: at most **5 findings**, at most **300 words**, in the role's exact format. Ask for the most severe first so the cut drops the least important.
-- **Artifacts:** each `.flow/` file leads with a short summary. Detail goes below it and stays proportional to the task.
+- **Artifacts:** each `.builders/` file leads with a short summary. Detail goes below it and stays proportional to the task.
 - **Tests:** the fewest that prove the behavior. See `roles/slice-builder.md`.
 
 ## Fan out
@@ -35,7 +35,7 @@ Small inputs and small outputs give better results, and keep the orchestrator fr
 Read-only subagents (lenses, research, review) share the checkout. Subagents that **write code** each get their own git worktree, so two writers never touch the same working tree:
 
 ```bash
-git worktree add ../<repo>-<slug>-<slice> -b flow/<slug>/<slice>
+git worktree add ../<repo>-<slug>-<slice> -b builders/<slug>/<slice>
 ```
 
 Remove worktrees after their branch is merged back (`git worktree remove <path>`).

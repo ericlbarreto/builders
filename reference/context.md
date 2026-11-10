@@ -1,13 +1,13 @@
 # Loading project context
 
-eric-flow knows nothing about a project until it reads it. Every module that makes judgments starts here.
+builders knows nothing about a project until it reads it. Every module that makes judgments starts here.
 
 ## Read, in this order, whatever exists
 
 1. Agent instructions: `AGENTS.md`, `CLAUDE.md`, `.cursor/rules/`, `.claude/rules/`.
 2. Domain docs: `CONTEXT.md`, `docs/`, `docs/adr/` (titles first, open the relevant ones).
-3. Project lenses: `.flow/lenses/*.md`.
-4. The task's artifacts: `.flow/<slug>/*.md`.
+3. Project lenses: `.builders/lenses/*.md`.
+4. The task's artifacts: `.builders/<slug>/*.md`.
 5. The linked ticket or PR, when the user gave one (use the tracker's tools or `gh`).
 6. `README.md` and the manifest (`package.json`, `pyproject.toml`, `go.mod`...) to learn the stack and the commands for check, test and run.
 
@@ -26,4 +26,4 @@ Modules pass the relevant part of this note into subagent briefs, since subagent
 
 ## Project rules win
 
-When a project's own instructions conflict with eric-flow defaults (PR format, branch names, test commands, review rules), follow the project.
+When a project's own instructions conflict with builders defaults (PR format, branch names, test commands, review rules), follow the project.

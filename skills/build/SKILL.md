@@ -1,6 +1,6 @@
 ---
 name: build
-description: eric-flow build module. Implement an approved plan wave by wave, with one subagent per slice in its own git worktree, test-first, each slice reviewed against the spec before it is merged, then integrated and checked. Use when the user asks to build or implement an eric-flow plan, or runs /eric-flow:build.
+description: builders build module. Implement an approved plan wave by wave, with one subagent per slice in its own git worktree, test-first, each slice reviewed against the spec before it is merged, then integrated and checked. Use when the user asks to build or implement a builders plan, or runs /builders:build.
 ---
 
 # build
@@ -8,9 +8,9 @@ description: eric-flow build module. Implement an approved plan wave by wave, wi
 Paths: the plugin root is two directories above this skill's base directory.
 
 ## Preconditions
-- `.flow/<slug>/plan.md` exists and the user approved it. If not, run `plan` first.
+- `.builders/<slug>/plan.md` exists and the user approved it. If not, run `plan` first.
 - The working tree is clean, or the user agreed to build on top of their changes.
-- Follow the project's branch rules. Never build on the default branch: create `flow/<slug>` from it (or use the project's naming convention).
+- Follow the project's branch rules. Never build on the default branch: create `builders/<slug>` from it (or use the project's naming convention).
 
 ## Steps
 

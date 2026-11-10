@@ -3,7 +3,7 @@
 Every module reads and writes files in one folder per task, in the target repository:
 
 ```
-.flow/
+.builders/
   lenses/              committed: project-specific lenses (optional)
   <task-slug>/         gitignored: one task's artifacts
     spec.md
@@ -20,11 +20,11 @@ Every module reads and writes files in one folder per task, in the target reposi
 
 1. If the user names a slug, or the conversation already used one, use it.
 2. Otherwise derive a slug from the task: lowercase, ascii, hyphens, at most 5 words (`sms-opt-in-flow`). For a PR review with no task, use `pr-<number>` or `branch-<branch-name>`.
-3. If `.flow/<slug>/` exists, read every artifact in it before doing anything: a module may be resuming work.
-4. On first write, make sure `.flow/*/` is ignored while `.flow/lenses/` is not. If the repository has a `.gitignore` without these lines, append:
+3. If `.builders/<slug>/` exists, read every artifact in it before doing anything: a module may be resuming work.
+4. On first write, make sure `.builders/*/` is ignored while `.builders/lenses/` is not. If the repository has a `.gitignore` without these lines, append:
    ```
-   .flow/*
-   !.flow/lenses/
+   .builders/*
+   !.builders/lenses/
    ```
    Tell the user you did it.
 
