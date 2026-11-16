@@ -5,10 +5,16 @@ builders routes some roles to models outside Claude. **Every one is optional.** 
 ## Detect once per session
 
 ```bash
+export PATH="$HOME/.grok/bin:$HOME/.local/bin:$PATH"
 for c in codex cursor-agent agent grok; do printf '%s: ' "$c"; command -v "$c" || echo missing; done
+codex login status 2>&1 | head -1
 ```
 
+The `PATH` line matters: the Grok installer puts the binary in `~/.grok/bin` and only adds it to interactive shells, so a tool shell may not see it. Use the same `PATH` on every call to these CLIs.
+
 `agent` is the newer name of the Cursor CLI binary; treat it as `cursor-agent` when only it exists.
+
+On a machine with no browser (a remote box), the sign-in fixes are `codex login --device-auth` and `grok login --device-auth`. Both print a link and a code to open on another device.
 
 ## Chain: second model (adversarial review, second opinions)
 
