@@ -26,10 +26,12 @@ The goal is a **different model family** from Claude, usually GPT.
    ```
 2. **Cursor CLI** (`cursor-agent` or `agent`), choosing a GPT model:
    ```bash
-   cursor-agent --help            # once: confirm print mode and the model flag
-   cursor-agent -p '<prompt>' --model <gpt-model> --output-format text
+   cursor-agent status            # must say "Logged in"
+   cursor-agent models            # once: list the model ids this account has
+   cursor-agent -p '<prompt>' --model <gpt-model> --mode ask --trust --output-format text
    ```
-   Pick a GPT model from the models the installed version lists. If none is listed, use any non-Claude model.
+   - `--mode ask` keeps the run read-only. `--trust` is required in print mode, or it stops to ask whether the directory is trusted. Run it from the repository root.
+   - Pick a GPT model from `cursor-agent models`: prefer a `gpt-*-codex` id at default effort, then any other `gpt-*`. If no GPT id is listed, use any non-Claude model. Model ids change often, so never hardcode one.
 3. **Claude subagent** with `roles/adversary.md`. Say in the output: "no second model family available, review ran on Claude only".
 
 A link counts as **failed** and the chain moves on when: the binary is missing, it asks to log in, it errors, or it returns nothing in 5 minutes. Never stop the module because of a failed link. When a sign-in is the only problem, mention the fix once at the end (`codex login`, `cursor-agent login`).
@@ -43,7 +45,7 @@ Every second-model prompt says: read-only, do not edit files, return findings in
    grok -p '<prompt>'
    ```
    Always `-p`. Every prompt names the source ("Search X and the web"), a time window ("since 2026-01-01"), the output shape ("5 items, each with URL and date"), and an honesty clause ("If you cannot find real sources, say NO_RESULTS. List what you could not confirm.").
-2. **Cursor CLI** with a model that can browse, using the same prompt, when the installed version supports web access.
+2. **Cursor CLI with a Grok model** (a `grok-*` id from `cursor-agent models`), same prompt and the same flags as the second-model chain. Grok through Cursor may not search X or the live web: if the answer has no URLs, treat it as model knowledge, mark it `unverified`, and go on to link 3 for sources.
 3. **The session's web search and fetch tools**, same prompt discipline.
 4. **Nothing external available**: answer from the codebase and docs only, and mark every external fact `unverified`.
 

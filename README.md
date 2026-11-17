@@ -2,7 +2,7 @@
 
 A project-agnostic development harness for Claude Code. Every stage of the work (spec, triage, research, council, plan, build, review, verify, learn) is a module that works on its own or chained by `/feature`, and independent work runs as parallel subagents.
 
-Status: 0.3.1, first versions of every module. See [docs/design.md](docs/design.md).
+Status: 0.3.2, first versions of every module. See [docs/design.md](docs/design.md).
 
 ## Modules
 

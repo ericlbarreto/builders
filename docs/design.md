@@ -1,6 +1,6 @@
 # builders design
 
-Status: 0.3.1. Every module exists as a first version and has not yet been run on real work. Expect the first runs to change them.
+Status: 0.3.2. Every module exists as a first version and has not yet been run on real work. Expect the first runs to change them.
 
 ## Goals
 
